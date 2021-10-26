@@ -265,5 +265,19 @@ namespace Pop_Mihaela_Lab2M.Controllers
         {
             return _context.Books.Any(e => e.ID == id);
         }
+
+
+
+
+        //lab4
+
+        //
+
+
+
+
+
+
+
     }
 }
