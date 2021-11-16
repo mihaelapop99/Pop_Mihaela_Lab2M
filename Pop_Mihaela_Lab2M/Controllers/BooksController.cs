@@ -6,6 +6,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Pop_Mihaela_Lab2M.Data;
+using Pop_Mihaela_Lab2M.Data;
+using Pop_Mihaela_Lab2M.Models;
 using Pop_Mihaela_Lab2M.Models;
 
 namespace Pop_Mihaela_Lab2M.Controllers

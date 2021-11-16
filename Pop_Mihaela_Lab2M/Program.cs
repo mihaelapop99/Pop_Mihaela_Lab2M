@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using Microsoft.Extensions.DependencyInjection;
 using Pop_Mihaela_Lab2M.Data;
 
+
 namespace Pop_Mihaela_Lab2M
 {
     public class Program

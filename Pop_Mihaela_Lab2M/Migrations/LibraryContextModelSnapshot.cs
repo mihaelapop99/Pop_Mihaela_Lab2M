@@ -6,6 +6,7 @@ using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Pop_Mihaela_Lab2M.Data;
 
+
 namespace Pop_Mihaela_Lab2M.Migrations
 {
     [DbContext(typeof(LibraryContext))]
