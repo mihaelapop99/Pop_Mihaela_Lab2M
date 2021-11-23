@@ -10,7 +10,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Pop_Mihaela_Lab2M.Data;
 using Microsoft.EntityFrameworkCore;
-
+using Pop_Mihaela_Lab2M.Hubs;
 
 namespace Pop_Mihaela_Lab2M
 {
@@ -29,6 +29,11 @@ namespace Pop_Mihaela_Lab2M
             services.AddControllersWithViews();
             services.AddDbContext<LibraryContext>(options =>
             options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+
+
+            //lab 7
+            services.AddSignalR();
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -56,6 +61,10 @@ namespace Pop_Mihaela_Lab2M
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
+
+                // lab 7
+                endpoints.MapHub<ChatHub>("/chathub");
+
             });
         }
     }
