@@ -54,6 +54,10 @@ namespace Pop_Mihaela_Lab2M
 
             app.UseRouting();
 
+            //lab 8
+            app.UseAuthentication();
+            //
+
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
@@ -64,6 +68,9 @@ namespace Pop_Mihaela_Lab2M
 
                 // lab 7
                 endpoints.MapHub<ChatHub>("/chathub");
+
+                //lab8
+                endpoints.MapRazorPages();
 
             });
         }
