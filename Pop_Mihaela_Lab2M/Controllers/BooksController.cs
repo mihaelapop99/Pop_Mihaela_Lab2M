@@ -6,12 +6,12 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Pop_Mihaela_Lab2M.Data;
-using Pop_Mihaela_Lab2M.Data;
 using Pop_Mihaela_Lab2M.Models;
-using Pop_Mihaela_Lab2M.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Pop_Mihaela_Lab2M.Controllers
 {
+    [Authorize(Roles = "Employee")]
     public class BooksController : Controller
     {
         private readonly LibraryContext _context;
@@ -26,7 +26,7 @@ namespace Pop_Mihaela_Lab2M.Controllers
 
 
 
-
+        [AllowAnonymous]
         public async Task<IActionResult> Index(
                      string sortOrder,
                      string currentFilter,
@@ -85,6 +85,7 @@ namespace Pop_Mihaela_Lab2M.Controllers
 
 
         // GET: Books/Details/5
+        [AllowAnonymous]
         public async Task<IActionResult> Delete(int? id, bool? saveChangesError = false)
         {
             if (id == null)
