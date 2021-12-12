@@ -11,6 +11,7 @@ using System.Threading.Tasks;
 using Pop_Mihaela_Lab2M.Data;
 using Microsoft.EntityFrameworkCore;
 using Pop_Mihaela_Lab2M.Hubs;
+using Microsoft.AspNetCore.Identity;
 
 namespace Pop_Mihaela_Lab2M
 {
@@ -33,6 +34,46 @@ namespace Pop_Mihaela_Lab2M
 
             //lab 7
             services.AddSignalR();
+
+            //lab9 pct 6
+            services.AddRazorPages();
+
+            //lab9
+            services.Configure<IdentityOptions>(options => {
+
+                options.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(5);
+                options.Lockout.MaxFailedAccessAttempts = 3;
+                options.Lockout.AllowedForNewUsers = true;
+            });
+
+
+            //doar de asta de jos scria
+            services.AddAuthorization(opts => {
+                opts.AddPolicy("OnlySales", policy => {
+                    policy.RequireClaim("Department", "Sales");
+                });
+            });
+
+            //
+
+
+
+            //lab9 pct 16
+            services.AddAuthorization(opts => {
+                opts.AddPolicy("SalesManager", policy => {
+                    policy.RequireRole("Manager");
+                    policy.RequireClaim("Department", "Sales");
+                });
+            });
+            services.ConfigureApplicationCookie(opts =>
+            {
+                opts.AccessDeniedPath = "/Identity/Account/AccessDenied";
+
+            });
+            //
+
+
+
 
         }
 
