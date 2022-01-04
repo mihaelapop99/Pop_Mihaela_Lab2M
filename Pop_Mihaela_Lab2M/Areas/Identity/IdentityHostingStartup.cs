@@ -8,19 +8,25 @@ using Microsoft.Extensions.DependencyInjection;
 using Pop_Mihaela_Lab2M.Data;
 
 [assembly: HostingStartup(typeof(Pop_Mihaela_Lab2M.Areas.Identity.IdentityHostingStartup))]
+
 namespace Pop_Mihaela_Lab2M.Areas.Identity
 {
+
     public class IdentityHostingStartup : IHostingStartup
     {
+
         public void Configure(IWebHostBuilder builder)
         {
-            builder.ConfigureServices((context, services) => {
+            builder.ConfigureServices((context, services) =>
+            {
                 services.AddDbContext<IdentityContext>(options =>
                     options.UseSqlServer(
                         context.Configuration.GetConnectionString("IdentityContextConnection")));
 
-                services.AddIdentity<IdentityUser, IdentityRole>(options =>options.SignIn.RequireConfirmedAccount = true)
-                    .AddEntityFrameworkStores<IdentityContext>();
+                services.AddDefaultIdentity<IdentityUser>(options =>
+                    options.SignIn.RequireConfirmedAccount = true)
+                        .AddRoles<IdentityRole>()
+                        .AddEntityFrameworkStores<IdentityContext>();
             });
         }
     }
